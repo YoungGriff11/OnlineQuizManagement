@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Group ID and Artifact ID define the project in the Maven repository -->
+    <groupId>ConorGriffin</groupId>
+    <artifactId>OnlineQuizManagement</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- The packaging type is WAR (Web Application Archive) for a web app -->
+    <packaging>war</packaging>
+    <name>OnlineQuizManagement-1.0-SNAPSHOT</name>
+
+    <properties>
+        <!-- Define the source encoding and Jakarta EE version -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jakartaee>10.0.0</jakartaee>
+    </properties>
+
+    <dependencies>
+        <!-- Jakarta EE API dependency (provided scope because it is available in the container) -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${jakartaee}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Jakarta WS-RS API dependency for building RESTful web services -->
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>3.1.0</version> <!-- Ensure compatibility with Jakarta EE 10 -->
+        </dependency>
+
+        <!-- Jersey Server dependency to provide JAX-RS implementation -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>3.1.0</version> <!-- Ensure compatibility with Jakarta EE 10 -->
+        </dependency>
+
+        <!-- Jersey Media JSON Binding dependency for handling JSON data -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-binding</artifactId>
+            <version>3.1.0</version> <!-- Ensure compatibility with Jakarta EE 10 -->
+        </dependency>
+    </dependencies>
+
+    <!-- Repositories section, specifying the location of the GlassFish repository -->
+    <repositories>
+        <repository>
+            <id>glassfish-repo</id>
+            <url>https://maven.java.net/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin configuration to use Java 11 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+
+            <!-- GlassFish Maven Plugin to deploy to GlassFish server -->
+            <plugin>
+                <groupId>org.glassfish</groupId>
+                <artifactId>glassfish-maven-plugin</artifactId>
+                <version>5.1.0</version> <!-- Ensure compatibility with Jakarta EE -->
+            </plugin>
+
+            <!-- Maven WAR Plugin to package the application as a WAR file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,6 @@
+conorgriffin\onlinequizmanagement\filter\APIKeyFilter.class
+conorgriffin\onlinequizmanagement\model\Questions.class
+conorgriffin\onlinequizmanagement\resources\QuizResource.class
+conorgriffin\onlinequizmanagement\model\Quiz.class
+conorgriffin\onlinequizmanagement\service\QuizService.class
+conorgriffin\onlinequizmanagement\JakartaRestConfiguration.class
